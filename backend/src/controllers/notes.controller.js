@@ -22,9 +22,14 @@ export async function getNote(req, res) {
 
 export async function createNote(req, res) {
   try {
-    const { title, content } = req.body;
+    const { title, content, tagIds } = req.body;
     if (!title) return res.status(400).json({ error: "Title is required" });
-    const note = await notesService.createNote({ title, content });
+    
+    if (tagIds !== undefined && !Array.isArray(tagIds)) {
+      return res.status(400).json({ error: "tagIds must be an array" });
+    }
+    
+    const note = await notesService.createNote({ title, content, tagIds });
     res.status(201).json(note);
   } catch {
     res.status(500).json({ error: "Error creating note" });
@@ -33,8 +38,13 @@ export async function createNote(req, res) {
 
 export async function updateNote(req, res) {
   try {
-    const { title, content } = req.body;
-    const note = await notesService.updateNote(parseInt(req.params.id), { title, content });
+    const { title, content, tagIds } = req.body;
+    
+    if (tagIds !== undefined && !Array.isArray(tagIds)) {
+      return res.status(400).json({ error: "tagIds must be an array" });
+    }
+    
+    const note = await notesService.updateNote(parseInt(req.params.id), { title, content, tagIds });
     if (!note) return res.status(404).json({ error: "Note not found" });
     res.status(200).json(note);
   } catch {
