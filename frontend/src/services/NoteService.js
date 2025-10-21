@@ -1,4 +1,8 @@
 import config from "../config";
+const headers = {
+  "Accept": "*/*",
+  "Content-Type": "application/json", 
+}
 
 export const getNotes = async (archived = false) => {
   try {
@@ -6,6 +10,7 @@ export const getNotes = async (archived = false) => {
       `${config.BASE_URL}/api/notes?archived=${archived}`,
       {
         method: "GET",
+        headers
       }
     );
 
@@ -17,11 +22,12 @@ export const getNotes = async (archived = false) => {
   }
 };
 
-export const editNote = async (id, data) => {
+export const editNote = async (id, payload) => {
   try {
-    const response = await fetch(`${config.BASE_URL}/api/notes/${archived}`, {
+    const response = await fetch(`${config.BASE_URL}/api/notes/${id}`, {
       method: "PUT",
-      body: JSON.stringify(data),
+      body: JSON.stringify(payload),
+      headers
     });
 
     const data = await response.json();
@@ -36,6 +42,7 @@ export const deleteNote = async (id) => {
   try {
     const response = await fetch(`${config.BASE_URL}/api/notes/${id}`, {
       method: "DELETE",
+      headers
     });
 
     const data = await response.json();
@@ -51,6 +58,7 @@ export const createNote = async (payload) => {
     const response = await fetch(`${config.BASE_URL}/api/notes`, {
       method: "POST",
       body: JSON.stringify(payload),
+      headers
     });
 
     const data = await response.json();
