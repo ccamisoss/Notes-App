@@ -134,6 +134,9 @@ export async function updateNote(id, data) {
 export async function deleteNote(id) {
   const note = await prisma.note.findUnique({ where: { id } });
   if (!note) return null;
+  
+  await prisma.noteTag.deleteMany({ where: { noteId: id } });
+  
   await prisma.note.delete({ where: { id } });
   return true;
 }
