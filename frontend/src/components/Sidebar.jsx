@@ -4,7 +4,7 @@ export function Sidebar() {
   const location = useLocation();
 
   return (
-    <div className="flex flex-col gap-4 p-3 w-1/6 bg-white shadow">
+    <div className="flex flex-col gap-4 p-3 w-full sm:w-1/6 bg-white shadow">
       <Link
         to="/create"
         className={`px-3 py-2 rounded transition-colors ${

@@ -15,7 +15,7 @@ export default function App() {
     <Router>
       <div className="min-h-screen flex flex-col bg-indigo-100">
         <Header />
-        <div className="flex flex-row flex-1">
+        <div className="flex flex-col sm:flex-row flex-1">
           <Sidebar />
           <main className="flex-1 p-6">
             <Routes>
