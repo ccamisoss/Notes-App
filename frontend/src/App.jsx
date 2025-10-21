@@ -19,7 +19,7 @@ export default function App() {
           <main className="flex-1 p-6">
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/users" element={<ArchivedNotes />} />
+              <Route path="/archived" element={<ArchivedNotes />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </main>
