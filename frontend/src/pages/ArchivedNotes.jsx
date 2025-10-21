@@ -1,7 +1,24 @@
+import { useEffect, useState } from "react";
+import { getNotes } from "../services/NoteService";
+import NotesList from "../components/NotesList";
+
 export default function ArchivedNotes() {
+  const [notes, setNotes] = useState([]);
+
+  const fetchNotes = async () => {
+    try {
+      const data = await getNotes(true);
+      setNotes(data);
+    } catch (error) {}
+  };
+
+  useEffect(() => {
+    fetchNotes();
+  }, []);
+
   return (
     <div>
-      <h2 className="text-xl font-semibold mb-4">Archived Notes</h2>
+      <NotesList notes={notes} />
     </div>
   );
 }
