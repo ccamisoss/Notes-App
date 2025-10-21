@@ -16,9 +16,9 @@ export function Sidebar() {
         All Notes
       </Link>
       <Link
-        to="/users"
+        to="/archived"
         className={`px-3 py-2 rounded transition-colors ${
-          location.pathname === "/users"
+          location.pathname === "/archived"
             ? "bg-gray-500 text-white"
             : "text-gray-700 hover:bg-gray-100"
         }`}
