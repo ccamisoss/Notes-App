@@ -67,7 +67,11 @@ export async function setArchived(req, res) {
     const { archived } = req.body;
     const note = await notesService.setArchived(parseInt(req.params.id), archived);
     if (!note) return res.status(404).json({ error: "Note not found" });
-    res.status(200).json(note);
+    res
+      .status(200)
+      .json({
+        message: `Note successfully ${archived ? "archived" : "unarchived"}`,
+      });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
