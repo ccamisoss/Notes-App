@@ -4,6 +4,7 @@ import { createNote, editNote, getNote } from "../services/NoteService";
 import Swal from "sweetalert2";
 import { getTags } from "../services/TagService";
 import { useNavigate, useParams } from "react-router-dom";
+import Tag from "./Tag";
 
 export default function NoteForm() {
   const navigate = useNavigate();
@@ -192,19 +193,11 @@ export default function NoteForm() {
                   ? tagId
                   : tags.find((t) => t.id === tagId);
                 return (
-                  <span
+                  <Tag
                     key={tagId}
-                    className="inline-flex items-center gap-1 px-2 py-1 bg-indigo-100 text-indigo-800 text-xs font-medium rounded-full"
-                  >
-                    {tag?.name || `Tag ${tagId}`}
-                    <button
-                      type="button"
-                      onClick={() => removeTag(tagId)}
-                      className="ml-1 text-indigo-600 hover:text-indigo-800"
-                    >
-                      ×
-                    </button>
-                  </span>
+                    name={tag?.name}
+                    onDelete={() => removeTag(tagId)}
+                  />
                 );
               })}
             </div>
@@ -212,7 +205,11 @@ export default function NoteForm() {
         )}
       </div>
       <div className="border-t border-gray-900/10 pt-7 mt-6 flex items-center justify-end gap-x-6">
-        <button type="button" className="text-sm/6 font-semibold text-gray-900">
+        <button
+          onClick={() => navigate("/")}
+          type="button"
+          className="text-sm/6 font-semibold text-gray-900"
+        >
           Cancel
         </button>
         <button
