@@ -75,7 +75,25 @@ export const createNote = async (payload) => {
     const response = await fetch(`${config.BASE_URL}/api/notes`, {
       method: "POST",
       body: JSON.stringify(payload),
-      headers
+      headers,
+    });
+
+    const data = await response.json();
+
+    return data;
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+export const toggleArchive = async (id, archived) => {
+  try {
+    const response = await fetch(`${config.BASE_URL}/api/notes/${id}/archive`, {
+      method: "PATCH",
+      body: JSON.stringify({
+        archived,
+      }),
+      headers,
     });
 
     const data = await response.json();
