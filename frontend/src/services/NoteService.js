@@ -22,6 +22,23 @@ export const getNotes = async (archived = false) => {
   }
 };
 
+export const getNote = async (id) => {
+  try {
+    const response = await fetch(
+      `${config.BASE_URL}/api/notes/${id}`,
+      {
+        method: "GET",
+        headers
+      }
+    );
+
+    const data = await response.json();
+
+    return data;
+  } catch (error) {
+  }
+};
+
 export const editNote = async (id, payload) => {
   try {
     const response = await fetch(`${config.BASE_URL}/api/notes/${id}`, {
