@@ -28,7 +28,8 @@ export default function NoteForm() {
         content: response.content,
       });
 
-      setSelectedTags(response.NoteTag);
+      let noteTagIds = response.NoteTag.map(tag => tag.id)
+      setSelectedTags(noteTagIds);
     } catch (error) {
       Swal.fire({
         icon: "error",
@@ -189,9 +190,7 @@ export default function NoteForm() {
             </div>
             <div className="flex flex-wrap gap-2 mt-4">
               {selectedTags?.map((tagId) => {
-                const tag = tagId.name
-                  ? tagId
-                  : tags.find((t) => t.id === tagId);
+                const tag = tags.find((t) => t.id === tagId);
                 return (
                   <Tag
                     key={tagId}
