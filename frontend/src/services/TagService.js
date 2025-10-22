@@ -37,12 +37,12 @@ export const deleteTag = async (id) => {
   }
 };
 
-export const createNote = async (payload) => {
+export const createTag = async (name) => {
   try {
     const response = await fetch(`${config.BASE_URL}/api/tags`, {
       method: "POST",
-      body: JSON.stringify(payload),
-      headers
+      body: JSON.stringify({ name }),
+      headers,
     });
 
     const data = await response.json();
