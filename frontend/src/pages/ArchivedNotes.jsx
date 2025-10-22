@@ -17,8 +17,8 @@ export default function ArchivedNotes() {
   }, []);
 
   return (
-    <div>
+    <>
       <NotesList refresh={fetchNotes} notes={notes} />
-    </div>
+    </>
   );
 }
