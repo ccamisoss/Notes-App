@@ -13,11 +13,6 @@ export default function Note({ note, refresh }) {
 
       if (res.error) throw new Error(res.error);
 
-      Swal.fire({
-        icon: "success",
-        text: res.message,
-      });
-
       refresh();
     } catch (error) {
       Swal.fire({

@@ -18,7 +18,6 @@ export const getNotes = async (archived = false) => {
 
     return data;
   } catch (error) {
-    console.log(JSON.stringify(error));
   }
 };
 
@@ -51,7 +50,6 @@ export const editNote = async (id, payload) => {
 
     return data;
   } catch (error) {
-    console.log(error.message);
   }
 };
 
@@ -66,7 +64,6 @@ export const deleteNote = async (id) => {
 
     return data;
   } catch (error) {
-    console.log(error.message);
   }
 };
 
@@ -82,7 +79,6 @@ export const createNote = async (payload) => {
 
     return data;
   } catch (error) {
-    console.log(error.message);
   }
 };
 
@@ -100,6 +96,5 @@ export const toggleArchive = async (id, archived) => {
 
     return data;
   } catch (error) {
-    console.log(error.message);
   }
 };

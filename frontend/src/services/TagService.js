@@ -18,7 +18,6 @@ export const getTags = async () => {
 
     return data;
   } catch (error) {
-    console.log(JSON.stringify(error));
   }
 };
 
@@ -33,7 +32,6 @@ export const deleteTag = async (id) => {
 
     return data;
   } catch (error) {
-    console.log(error.message);
   }
 };
 
@@ -49,6 +47,5 @@ export const createTag = async (name) => {
 
     return data;
   } catch (error) {
-    console.log(error.message);
   }
 };

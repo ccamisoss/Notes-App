@@ -5,7 +5,6 @@ import { useSearchParams } from "react-router-dom";
 const NotesList = ({ notes, refresh }) => {
   const [searchParams] = useSearchParams();
   const tag = searchParams.get('tag');
-  console.log(tag)
 
   const filteredNotes = tag
     ? notes.filter(note => 
