@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 import trashIcon from "../assets/icons/trash.svg";
 import plusIcon from "../assets/icons/plus.svg";
 
-export function Sidebar() {
+export function Menu({ isVisible }) {
   const [newTag, setNewTag] = useState("");
   const location = useLocation();
   const [tags, setTags] = useState([]);
@@ -52,7 +52,11 @@ export function Sidebar() {
   };
 
   return (
-    <div className="flex flex-col gap-4 py-3 w-full sm:w-1/6 bg-white shadow">
+    <div
+      className={`flex-col gap-4 py-3 w-full sm:w-1/6 bg-white shadow ${
+        isVisible ? "flex" : "hidden"
+      } sm:flex`}
+    >
       <Link
         to="/create"
         className={`mx-3 px-3 py-2 rounded transition-colors ${
