@@ -13,7 +13,7 @@ import NoteForm from "./components/NoteForm";
 export default function App() {
   return (
     <Router>
-      <div className="min-h-screen flex flex-col bg-indigo-100">
+      <div className="min-h-screen flex flex-col bg-gradient-to-b from-indigo-100 to-indigo-400">
         <Header />
         <div className="flex flex-col sm:flex-row flex-1">
           <Sidebar />
