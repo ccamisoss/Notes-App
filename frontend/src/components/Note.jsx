@@ -4,7 +4,7 @@ import NoteMenu from "./NoteMenu";
 import Tag from "./Tag";
 import { useNavigate } from "react-router-dom";
 
-export default function Note({ note, refresh }) {
+export default function Note({ note, refresh, onOpen }) {
   const navigate = useNavigate();
 
   const handleDelete = async () => {
@@ -47,15 +47,16 @@ export default function Note({ note, refresh }) {
   };
 
   return (
-    <div className="relative flex flex-col min-h-32 px-4 py-2.5 bg-white rounded-lg shadow space-y-2">
+    <div className="relative flex flex-col h-48 px-4 py-2.5 bg-white rounded-lg shadow space-y-2">
       <NoteMenu
         onDelete={handleDelete}
         onEdit={handleEdit}
         isArchived={note.archived}
         onToggleArchive={handleToggleArchive}
+        onOpen={onOpen}
       />
       <h3 className="font-semibold text-lg">{note.title}</h3>
-      <p className="flex-1">{note.content}</p>
+      <p className="flex-1 overflow-hidden text-ellipsis line-clamp-4">{note.content}</p>
       <div className="flex flex-wrap gap-1">
         {note.NoteTag.map((tag) => (
           <Tag key={tag.id} name={tag.name} />

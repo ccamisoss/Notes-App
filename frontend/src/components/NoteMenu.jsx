@@ -1,4 +1,4 @@
-const NoteMenu = ({ onDelete, onEdit, onToggleArchive, isArchived }) => {
+const NoteMenu = ({ onDelete, onEdit, onToggleArchive, isArchived, onOpen }) => {
   return (
     <div className="absolute top-2 right-2 inline-block text-left">
       <button
@@ -18,6 +18,13 @@ const NoteMenu = ({ onDelete, onEdit, onToggleArchive, isArchived }) => {
         onClick={(e) => e.stopPropagation()}
       >
         <div className="py-1">
+          <button
+            className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+            tabIndex={0}
+            onClick={onOpen}
+          >
+            View note
+          </button>
           <button
             className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
             tabIndex={0}

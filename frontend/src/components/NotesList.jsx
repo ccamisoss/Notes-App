@@ -1,14 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import Note from "./Note";
+import NoteModal from "./NoteModal";
 import { useSearchParams } from "react-router-dom";
 
 const NotesList = ({ notes, refresh }) => {
   const [searchParams] = useSearchParams();
-  const tag = searchParams.get('tag');
+  const [isNoteOpen, setIsNoteOpen] = useState(false);
+  const [selectedNote, setSelectedNote] = useState({});
+  const tag = searchParams.get("tag");
 
   const filteredNotes = tag
-    ? notes.filter(note => 
-        note.NoteTag.some(noteTag => noteTag.name === tag)
+    ? notes.filter((note) =>
+        note.NoteTag.some((noteTag) => noteTag.name === tag)
       )
     : notes;
 
@@ -21,11 +24,31 @@ const NotesList = ({ notes, refresh }) => {
     );
   }
 
+  const handleCloseModal = () => {
+    setSelectedNote({});
+    setIsNoteOpen(false);
+  };
+
+  const handleModalOpen = (note) => {
+    setSelectedNote(note);
+    setIsNoteOpen(true);
+  };
+
   return (
     <div className="grid grid-cols-1 gap-4 lg:grid-cols-3 lg:gap-8">
       {filteredNotes.map((note) => (
-        <Note refresh={refresh} note={note} key={note.id} />
+        <Note
+          onOpen={() => handleModalOpen(note)}
+          refresh={refresh}
+          note={note}
+          key={note.id}
+        />
       ))}
+      <NoteModal
+        note={selectedNote}
+        isOpen={isNoteOpen}
+        onClose={handleCloseModal}
+      />
     </div>
   );
 };
