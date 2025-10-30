@@ -15,8 +15,8 @@ export async function createTag(req, res) {
     if (!name) return res.status(400).json({ error: "Name is required" });
     const tag = await tagsService.createTag({ name });
     res.status(201).json(tag);
-  } catch {
-    res.status(500).json({ error: "Error creating tag" });
+  } catch (e){
+    res.status(500).json({ error: e.message });
   }
 }
 
