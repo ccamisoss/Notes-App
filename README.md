@@ -2,6 +2,12 @@
 
 A simple web application that allows you to take notes, tag, and filter them. This project consists of a React frontend and a Node.js/Express backend with PostgreSQL database.
 
+## 🚀 Deployment
+
+The application is deployed on **Vercel** and available at the following link:
+
+👉 [https://notes-app-ccamisoss.vercel.app/](https://notes-app-ccamisoss.vercel.app/)
+
 ## 🚀 Quick Start
 
 ### Prerequisites
